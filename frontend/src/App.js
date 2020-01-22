@@ -1,69 +1,93 @@
-import React, { Component } from 'react';
-import axios from 'axios'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
-import Nav from './components/Nav'
-import Login from './components/registrations/Login'
-import Signup from './components/registrations/Signup'
+import React, { Component } from "react";
+import axios from "axios";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Header from "./components/home/Header";
+import Home from "./components/home/Home";
+import SearchContainer from "./components/search/SearchContainer";
+import FavContainer from "./components/favorite/FavContainer";
+import Nav from "./components/registrations/Nav";
+import Login from "./components/registrations/Login";
+import Signup from "./components/registrations/Signup";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       isLoggedIn: false,
       user: {}
-     };
+    };
   }
-componentDidMount() {
-    this.loginStatus()
+  componentDidMount() {
+    this.loginStatus();
   }
-loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', {withCredentials: true})
-    .then(response => {
-      if (response.data.logged_in) {
-        this.handleLogin(response)
-      } else {
-        this.handleLogout()
-      }
-    })
-    .catch(error => console.log('api errors:', error))
-  }
-handleLogin = (data) => {
+  loginStatus = () => {
+    axios
+      .get("http://localhost:3001/logged_in", { withCredentials: true })
+      .then(response => {
+        if (response.data.logged_in) {
+          this.handleLogin(response);
+        } else {
+          this.handleLogout();
+        }
+      })
+      .catch(error => console.log("api errors:", error));
+  };
+  handleLogin = data => {
     this.setState({
       isLoggedIn: true,
       user: data.user
-    })
-  }
-handleLogout = () => {
+    });
+  };
+  handleLogout = () => {
     this.setState({
-    isLoggedIn: false,
-    user: {}
-    })
-  }
-render() {
+      isLoggedIn: false,
+      user: {}
+    });
+  };
+  render() {
     return (
       <div>
-        <BrowserRouter>
+        <Router>
+          <Header />
           <Switch>
-            <Route 
-              exact path='/' 
+            <Route path="/" exact component={Home} />
+            <Route exact path="/search" component={SearchContainer} />
+            <Route exact path="/profile" component={FavContainer} />
+            <Route
+              exact
+              path="/nav"
               render={props => (
-              <Nav {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn}/>
+                <Nav
+                  {...props}
+                  handleLogout={this.handleLogout}
+                  loggedInStatus={this.state.isLoggedIn}
+                />
               )}
             />
-            <Route 
-              exact path='/login' 
+            <Route
+              exact
+              path="/login"
               render={props => (
-              <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+                <Login
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  loggedInStatus={this.state.isLoggedIn}
+                />
               )}
             />
-            <Route 
-              exact path='/signup' 
+            <Route
+              exact
+              path="/signup"
               render={props => (
-              <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+                <Signup
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  loggedInStatus={this.state.isLoggedIn}
+                />
               )}
             />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }
