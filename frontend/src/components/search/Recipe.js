@@ -1,17 +1,30 @@
-import React from 'react'; 
+import React, { Component } from "react";
+import Fab from "@material-ui/core/Fab";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
-const Recipe = ({title, calories, image, totalNutrients}) => {
-    console.log(totalNutrients.FAT.label)
-    return(
-        <div>
-            <h1>{title}</h1>
-            <p>Calories:{calories}</p>
-    <span>Fat:{totalNutrients.FAT.quantity}grams</span>
-    <span>Carbs:{totalNutrients.CHOCDF.quantity}grams</span>
-    <span>Protein{totalNutrients.PROCNT.quantity}grams</span><br></br>
-            <img src={image} alt=""/>
-        </div>
+class Recipe extends Component {
+  render() {
+    return (
+      <div className="column">
+        <h1>{this.props.title}</h1>
+        <img src={this.props.image} alt="" />
+        <br />
+        <br />
+        Calories: {Math.round(this.props.calories)} kcal
+        <br />
+        Fat: {Math.round(this.props.totalNutrients.FAT.quantity)} grams
+        <br />
+        Carbs: {Math.round(this.props.totalNutrients.CHOCDF.quantity)} grams
+        <br />
+        Protein: {Math.round(this.props.totalNutrients.PROCNT.quantity)} grams
+        <br />
+        <br />
+        <Fab onClick={() => this.handleFavorite}>
+          <FavoriteIcon />
+        </Fab>
+      </div>
     );
+  }
 }
 
-export default Recipe; 
+export default Recipe;

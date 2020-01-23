@@ -69,3 +69,8 @@ code {
 .ul {
   list-style: none;
 }
+
+.column {
+  float: left;
+  width: 33.33%;
+}
