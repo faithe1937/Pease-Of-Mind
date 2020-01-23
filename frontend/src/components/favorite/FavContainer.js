@@ -1,6 +1,7 @@
 import React from "react";
 
-const FavContainer = () => {
+const FavContainer = props => {
+  console.log(props.user);
   return (
     <div>
       <h1>Profile</h1>

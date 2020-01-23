@@ -25,7 +25,8 @@ class App extends Component {
       .get("http://localhost:3001/logged_in", { withCredentials: true })
       .then(response => {
         if (response.data.logged_in) {
-          this.handleLogin(response);
+          console.log(response);
+          this.handleLogin(response.data);
         } else {
           this.handleLogout();
         }
@@ -33,10 +34,13 @@ class App extends Component {
       .catch(error => console.log("api errors:", error));
   };
   handleLogin = data => {
-    this.setState({
-      isLoggedIn: true,
-      user: data.user
-    });
+    this.setState(
+      {
+        isLoggedIn: true,
+        user: data.user
+      },
+      () => console.log(data.user)
+    );
   };
   handleLogout = () => {
     this.setState({
@@ -52,7 +56,10 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route exact path="/search" component={SearchContainer} />
-            <Route exact path="/profile" component={FavContainer} />
+            <Route exact path="/profile" component={FavContainer}>
+              <FavContainer user={this.state.user} />
+            </Route>
+
             <Route
               exact
               path="/nav"
