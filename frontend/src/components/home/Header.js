@@ -14,7 +14,7 @@ class Header extends Component {
     return (
       <div>
         <div className="header">
-          <h1>N U T R I T I O N</h1>
+          <h1>PEAS OF MIND</h1>
         </div>
         <div className="nav-bar">
           {" "}

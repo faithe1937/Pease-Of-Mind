@@ -1,10 +1,13 @@
 import React from "react";
+import UserInfo from "./UserInfo";
+import Chart from "./Chart";
 
 const FavContainer = props => {
-  console.log(props.user);
+  // console.log(props.user);
   return (
     <div>
-      <h1>Profile</h1>
+      <UserInfo user={props.user} />
+      <Chart />
     </div>
   );
 };
