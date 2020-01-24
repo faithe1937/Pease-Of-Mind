@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 
 const UserInfo = props => {
-  console.log(props.user);
+  //   console.log(props.user);
 
   return (
     <div className={"card"}>

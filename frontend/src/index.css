@@ -14,7 +14,7 @@ code {
 
 .header {
   width: 100%;
-  background-image: linear-gradient(to right top, white, grey, black);
+  background-image: linear-gradient(to right top, lightyellow, orange);
   background-repeat: no-repeat;
   font-size: 25px;
   letter-spacing: 1.5px;
@@ -28,7 +28,7 @@ code {
 
 .nav-bar {
   width: 100%;
-  background-color: lightgrey;
+  background-color: rgba(75, 192, 192, 0.6);
   background-repeat: no-repeat;
   font-size: 20px;
   letter-spacing: 1.5px;

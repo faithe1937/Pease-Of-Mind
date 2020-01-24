@@ -7,7 +7,10 @@ const FavContainer = props => {
   return (
     <div>
       <UserInfo user={props.user} />
-      <Chart />
+      <br />
+      <br />
+      <br />
+      <Chart userData={props.user} />
     </div>
   );
 };
