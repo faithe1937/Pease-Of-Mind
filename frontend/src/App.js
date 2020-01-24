@@ -16,9 +16,11 @@ class App extends Component {
       user: {}
     };
   }
+
   componentDidMount() {
     this.loginStatus();
   }
+
   loginStatus = () => {
     axios
       .get("http://localhost:3001/logged_in", { withCredentials: true })
@@ -29,20 +31,24 @@ class App extends Component {
           this.handleLogout();
         }
       })
+
       .catch(error => console.log("api errors:", error));
   };
+
   handleLogin = data => {
     this.setState({
       isLoggedIn: true,
       user: data.user
     });
   };
+
   handleLogout = () => {
     this.setState({
       isLoggedIn: false,
       user: {}
     });
   };
+  
   render() {
     return (
       <div>
