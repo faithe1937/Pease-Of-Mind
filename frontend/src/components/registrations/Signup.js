@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
+import { Form } from 'semantic-ui-react'
 import axios from 'axios'
+
+// const options = [
+//   { key: 'm', text: 'Male', value: 'male' },
+//   { key: 'f', text: 'Female', value: 'female' },
+//   { key: 'o', text: 'Other', value: 'other' },
+// ]
 
 class Signup extends Component {
   constructor(props) {
     super(props);
+
     this.state = { 
       username: '',
       password: '',
       password_confirmation: '',
+      gender: '',
+      height: '',
+      weight: '',
+      activity: '',
       errors: ''
      };
+
   }
 handleChange = (event) => {
     const {name, value} = event.target
@@ -25,6 +38,7 @@ handleSubmit = (event) => {
       password: password,
       password_confirmation: password_confirmation
     }
+
 axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .then(response => {
       if (response.data.status === 'created') {
@@ -38,9 +52,11 @@ axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     })
     .catch(error => console.log('api errors:', error))
   };
+
 redirect = () => {
     this.props.history.push('/')
   }
+
   handleErrors = () => {
     return (
       <div>
@@ -52,39 +68,74 @@ redirect = () => {
       }
 
 render() {
-    const {username, password, password_confirmation} = this.state
+
+    const {username, password, password_confirmation, height, gender, weight} = this.state
+
 return (
+
       <div>
         <h1>Sign Up</h1>
-       <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="username"
-            type="text"
-            name="username"
+       <Form.Group widths='equal' Submit={this.handleSubmit}>
+          <Form.Input 
+            // fluid label='username'
+            fluid placeholder='username'
+            type='text'
+            name='username'
             value={username}
             onChange={this.handleChange}
           />
     
-          <input 
-            placeholder="password"
-            type="password"
-            name="password"
+          <Form.Input 
+            // fluid label='password'
+            fluid placeholder='password'
+            type='password'
+            name='password'
             value={password}
             onChange={this.handleChange}
           />
-          <input
-            placeholder="password confirmation"
-            type="password"
-            name="password_confirmation"
+
+          <Form.Input
+            // fluid label='password'
+            fluid placeholder='password confirmation'
+            type='password'
+            name='password_confirmation'
             value={password_confirmation}
             onChange={this.handleChange}
           />
-        
-          <button placeholder="submit" type="submit">
+
+          <Form.Input
+            // fluid label='password'
+            fluid placeholder='gender'
+            type='text'
+            name='gender'
+            value={gender}
+            onChange={this.handleChange}
+          />
+
+            <Form.Input
+            // fluid label='password'
+            fluid placeholder='weight'
+            type='text'
+            name='weight'
+            value={weight}
+            onChange={this.handleChange}
+          />
+
+            <Form.Input
+            // fluid label='password'
+            fluid placeholder='height'
+            type='text'
+            name='height'
+            value={height}
+            onChange={this.handleChange}
+          />
+
+
+          <Form.Button placeholder='submit' type='submit'>
             Sign Up
-          </button>
+          </Form.Button>
       
-        </form>
+        </Form.Group>
         <div>
           {
             this.state.errors ? this.handleErrors() : null
@@ -94,4 +145,5 @@ return (
     );
   }
 }
+
 export default Signup;
