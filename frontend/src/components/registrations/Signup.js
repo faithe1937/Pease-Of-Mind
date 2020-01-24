@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react'
+import { Form, Button, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 
 // const options = [
@@ -74,8 +74,8 @@ render() {
 return (
 
       <div>
-        <h1>Sign Up</h1>
        <Form.Group widths='equal' Submit={this.handleSubmit}>
+        <Segment stacked>
           <Form.Input 
             // fluid label='username'
             fluid placeholder='username'
@@ -131,11 +131,12 @@ return (
           />
 
 
-          <Form.Button placeholder='submit' type='submit'>
+          <Button placeholder='submit' type='submit'>
             Sign Up
-          </Form.Button>
-      
+          </Button>
+      </Segment>
         </Form.Group>
+
         <div>
           {
             this.state.errors ? this.handleErrors() : null
