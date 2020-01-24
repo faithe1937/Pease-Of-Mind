@@ -24,9 +24,14 @@ class Recipe extends Component {
         <br />
         <br />
 
+
         <Fab onClick={() => this.props.addFave(this.props)}>
+
+        <Fab>
+
           <FavoriteIcon />
         </Fab>
+        {/* </div> */}
       </div>
     );
   }

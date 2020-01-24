@@ -11,8 +11,9 @@ let protein = Math.round((calories * .30)) // / (4)
 
   return (
     <div>
+
       <UserInfo user={props.user} {...props}/>
-      <br />
+
       <br />
       <br />
       <Chart userData={props.user} 
