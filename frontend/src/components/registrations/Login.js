@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 class Login extends Component {
   constructor(props) {
@@ -55,10 +56,12 @@ handleErrors = () => {
 render() {
     const {username, password} = this.state
 return (
-      <div>
-        <h1>Log In</h1>
-        <form className="loginform" onSubmit={this.handleSubmit}>
-          <input
+  
+  <div>
+
+        <Form size='large' className="loginform" onSubmit={this.handleSubmit}>
+        <Segment stacked>
+          <Form.Input
             placeholder="username"
             type="text"
             name="username"
@@ -66,29 +69,38 @@ return (
             onChange={this.handleChange}
           />
         
-          <input
+          <Form.Input
             placeholder="password"
             type="password"
             name="password"
             value={password}
             onChange={this.handleChange}
           />
-          <button placeholder="submit" type="submit">
+
+          <Button placeholder="submit" type="submit">
             Log In
-          </button>
+          </Button>
+
           <div>
            or <Link to='/signup'>sign up</Link> <br>
            </br>
           </div>
-          
-        </form>
+
+          </Segment>
+        </Form>
+
         <div>
           {
             this.state.errors ? this.handleErrors() : null
           }
         </div>
-      </div>
+
+        
+      
+    </div>
+    
     );
   }
 }
+
 export default Login;
