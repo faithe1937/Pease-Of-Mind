@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Recipe from "./Recipe";
 
-const SearchContainer = () => {
+const SearchContainer = (props) => {
   const APP_ID = "74d885f3";
   const APP_KEY = "fe6738c7675a694485744dd422e1bfb3";
   //normally use environment tools to protect its privacy for api request
@@ -60,6 +60,8 @@ const SearchContainer = () => {
             image={recipe.recipe.image}
             ingredients={recipe.recipe.ingredients}
             totalNutrients={recipe.recipe.totalNutrients}
+
+            addFave={props.addFave}
           />
         ))}
       </div>

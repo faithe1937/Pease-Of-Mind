@@ -16,12 +16,14 @@ class Signup extends Component {
       username: '',
       password: '',
       password_confirmation: '',
-      gender: '',
-      height: '',
-      weight: '',
-      activity: '',
+     age: '',
+     gender: '',
+     height: '',
+     weight: '',
+     activity: '',
       errors: ''
      };
+
 
   }
 handleChange = (event) => {
@@ -30,15 +32,23 @@ handleChange = (event) => {
       [name]: value
     })
   };
+
 handleSubmit = (event) => {
     event.preventDefault()
-    const {username, password, password_confirmation} = this.state
+    const {username, password, password_confirmation, age, gender, height, weight, activity} = this.state
     let user = {
       username: username,
       password: password,
-      password_confirmation: password_confirmation
+      password_confirmation: password_confirmation,
+      age: age,
+      gender: gender,
+      height: height,
+      weight: weight,
+      activity: activity
     }
 
+  console.log(user)
+  
 axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .then(response => {
       if (response.data.status === 'created') {
@@ -69,12 +79,12 @@ redirect = () => {
 
 render() {
 
-    const {username, password, password_confirmation, height, gender, weight} = this.state
+    const {username, password, password_confirmation, height, gender, weight, age} = this.state 
 
 return (
 
       <div>
-       <Form.Group widths='equal' Submit={this.handleSubmit}>
+       <Form widths='equal' onSubmit={this.handleSubmit}>
         <Segment stacked>
           <Form.Input 
             // fluid label='username'
@@ -114,6 +124,15 @@ return (
 
             <Form.Input
             // fluid label='password'
+            fluid placeholder='age'
+            type='text'
+            name='age'
+            value={age}
+            onChange={this.handleChange}
+          />
+
+            <Form.Input
+            // fluid label='password'
             fluid placeholder='weight'
             type='text'
             name='weight'
@@ -129,13 +148,14 @@ return (
             value={height}
             onChange={this.handleChange}
           />
-
+ 
 
           <Button placeholder='submit' type='submit'>
             Sign Up
           </Button>
+
       </Segment>
-        </Form.Group>
+        </Form>
 
         <div>
           {

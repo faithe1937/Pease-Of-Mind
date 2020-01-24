@@ -24,7 +24,7 @@ const UserInfo = props => {
       <br />
       <br />
       <button>Edit</button>
-      <Button />
+      <Button {...props}/>
     </div>
   );
 };

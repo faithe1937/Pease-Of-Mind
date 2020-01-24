@@ -4,14 +4,14 @@ import Chart from "./Chart";
 
 const FavContainer = props => {
 
-let calories = ((props.user.weight * 6.24) + (props.user.height * 12.7) - (props.user.age * 6.755))
-let fat = ((calories/.30) / (9) )
-let carb = ((calories/.40) / (4))
-let protein = ((calories/.30) / (4)) 
+let calories = Math.round((props.user.weight * 6.24) + (props.user.height * 12.7) - (props.user.age * 6.755))
+let fat = Math.round((calories * .30) )// / (9)
+let carb = Math.round((calories * .40)) // (4)
+let protein = Math.round((calories * .30)) // / (4)
 
   return (
     <div>
-      <UserInfo user={props.user} />
+      <UserInfo user={props.user} {...props}/>
       <br />
       <br />
       <br />
@@ -19,7 +19,8 @@ let protein = ((calories/.30) / (4))
       calories={calories} 
       fat={fat}
       carb={carb}
-      protein={protein} />
+      protein={protein} 
+      {...props}/>
     </div>
   );
 };

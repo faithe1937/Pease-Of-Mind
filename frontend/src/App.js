@@ -13,7 +13,8 @@ class App extends Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      user: {}
+      user: {},
+      faveRecipe: []
     };
   }
 
@@ -48,6 +49,14 @@ class App extends Component {
       user: {}
     });
   };
+
+  addFave = (recipe) => {
+    this.setState({
+      faveRecipe: 
+      [...this.state.faveRecipe, recipe]
+    }, ()=> console.log(this.state.faveRecipe))
+
+  }
   
   render() {
     return (
@@ -60,9 +69,14 @@ class App extends Component {
                 />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route exact path="/search" component={SearchContainer} />
+
+            <Route exact path="/search" component={SearchContainer}>
+            <SearchContainer addFave={this.addFave} />
+            </Route>
+
             <Route exact path="/profile" component={FavContainer}>
-              <FavContainer user={this.state.user} />
+              <FavContainer user={this.state.user} faveList={this.state.faveRecipe}/>
+            
             </Route>
 
             {/* <Route
