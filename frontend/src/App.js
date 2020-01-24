@@ -5,7 +5,6 @@ import Header from "./components/home/Header";
 import Home from "./components/home/Home";
 import SearchContainer from "./components/search/SearchContainer";
 import FavContainer from "./components/favorite/FavContainer";
-import Nav from "./components/registrations/Nav";
 import Login from "./components/registrations/Login";
 import Signup from "./components/registrations/Signup";
 
@@ -52,7 +51,11 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <Header />
+        <Header
+                  // {...props}
+                  handleLogout={this.handleLogout}
+                  loggedInStatus={this.state.isLoggedIn}
+                />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route exact path="/search" component={SearchContainer} />
@@ -60,17 +63,17 @@ class App extends Component {
               <FavContainer user={this.state.user} />
             </Route>
 
-            <Route
+            {/* <Route
               exact
-              path="/nav"
+              path="/header"
               render={props => (
-                <Nav
+                <Header
                   {...props}
                   handleLogout={this.handleLogout}
                   loggedInStatus={this.state.isLoggedIn}
                 />
               )}
-            />
+            /> */}
             <Route
               exact
               path="/login"

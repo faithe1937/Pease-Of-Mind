@@ -57,7 +57,7 @@ render() {
 return (
       <div>
         <h1>Log In</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form className="loginform" onSubmit={this.handleSubmit}>
           <input
             placeholder="username"
             type="text"
@@ -77,7 +77,8 @@ return (
             Log In
           </button>
           <div>
-           or <Link to='/signup'>sign up</Link>
+           or <Link to='/signup'>sign up</Link> <br>
+           </br>
           </div>
           
         </form>

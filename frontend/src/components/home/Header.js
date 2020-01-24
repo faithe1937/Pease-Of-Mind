@@ -1,8 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
+import axios from 'axios'
+import {Link} from 'react-router-dom'
 
-class Header extends Component {
-  render() {
+// class Header extends Component {
+//   render() {
+  const Header = (props) => {
+    console.log(props)
+
+    const handleClick = () => {
+        axios.delete('http://localhost:3001/logout', {withCredentials: true})
+        .then(response => {
+          props.handleLogout()
+          // props.history.push('/')
+        })
+        .catch(error => console.log(error))
+      }
+    // 
     const link = {
       width: "100px",
       padding: "15px",
@@ -27,12 +41,16 @@ class Header extends Component {
           <NavLink to="/profile" exact style={link}>
             Profile
           </NavLink>
-          <NavLink to="/nav" exact style={link}>
-            Registration
+          <NavLink to="/login" exact style={link}>
+            Sign In
           </NavLink>
+          {/* { 
+        props.loggedInStatus ?  */}
+        <Link to='/' onClick={handleClick}>Log Out</Link> 
+      {/* } */}
         </div>
       </div>
     );
   }
-}
+
 export default Header;
