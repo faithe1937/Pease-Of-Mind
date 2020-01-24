@@ -1,25 +1,28 @@
-import React, { Component } from "react";
 
-class Button extends Component {
-  render() {
-    return (
-      // <div>
-      //   <button>Favorites</button>
-      // </div>
-      <div className="dropdown">
-        <button
-          type="button"
-          className="btn btn-primary dropdown-toggle"
-          data-toggle="dropdown"
-        >
-          Dropdown button
-        </button>
-        <div className="dropdown-menu">
-          <span className="dropdown-item-text">Just Text</span>
-        </div>
-      </div>
-    );
-  }
-}
+import React from "react";
+
+
+const Button = props => {
+console.log(props);
+
+  return (
+    <div className={"card"}>
+    {/* //     <h1>{props.title}</h1>
+    //     <img src={props.image} alt="" />
+    //     <br />
+    //     <br />
+    //     Calories: {Math.round(props.calories)} kcal
+    //     <br />
+    //     Fat: {Math.round(props.totalNutrients.FAT.quantity)} grams
+    //     <br />
+    //     Carbs: {Math.round(props.totalNutrients.CHOCDF.quantity)} grams
+    //     <br />
+    //     Protein: {Math.round(props.totalNutrients.PROCNT.quantity)} grams
+    //     <br />
+    //     <br /> */}
+    </div>
+  );
+};
+
 
 export default Button;

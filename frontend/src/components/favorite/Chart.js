@@ -6,10 +6,10 @@ class Chart extends Component {
   render() {
     console.log(this.props.calories)
    const data = {
-    labels: ["Calories", "Fat (g)", "Carbohydrate (g)", "Protein (g) "],
+    labels: ["Calories", "Fat", "Carbohydrate", "Protein"],
     datasets: [
       {
-        label: "Daily Value",
+        label: "kcal",
         data: [
           //calories
           this.props.calories,
