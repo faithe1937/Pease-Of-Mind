@@ -28,8 +28,11 @@ const Header = props => {
 
   return (
     <div>
-      <div className="header">
-        <h1>PEAS OF MIND</h1>
+      <div className="jumbotron header">
+        {/* <a className="navbar-brand">
+          <img src="./peas.png" alt="logo"></img>
+        </a> */}
+        <h1 className="display-4">Peas of Mind</h1>
       </div>
       <div className="nav-bar">
         {" "}

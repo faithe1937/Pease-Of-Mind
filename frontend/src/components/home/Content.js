@@ -4,6 +4,8 @@ class Content extends Component {
   render() {
     return (
       <div className="master-detail-element detail">
+        <h2>What are Macronutrients?</h2>
+        <hr></hr>
         <h3>Fat</h3>
         <p>
           Fat is a nutrient. It is crucial for normal body function, and without

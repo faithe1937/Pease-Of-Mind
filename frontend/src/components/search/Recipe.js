@@ -19,9 +19,11 @@ class Recipe extends Component {
         Protein: {Math.round(this.props.totalNutrients.PROCNT.quantity)} grams
         <br />
         <br />
-        <Fab onClick={() => this.handleFavorite}>
+        {/* <div onClick={() => this.props.handleFavorite}> */}
+        <Fab>
           <FavoriteIcon />
         </Fab>
+        {/* </div> */}
       </div>
     );
   }
