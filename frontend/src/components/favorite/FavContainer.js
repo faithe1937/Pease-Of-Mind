@@ -6,6 +6,7 @@ const FavContainer = props => {
   // console.log(props.user);
   return (
     <div>
+      <br />
       <UserInfo user={props.user} />
       <br />
       <br />

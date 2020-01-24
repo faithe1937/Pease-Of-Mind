@@ -8,7 +8,7 @@ const UserInfo = props => {
     <div className={"card"}>
       <br />
       <h1>
-        Welcome, <i>{props.user.username}</i>
+        Welcome <i>{props.user.username}</i>
       </h1>
       Age: {props.user.age}
       <br />

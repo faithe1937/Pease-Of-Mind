@@ -38,28 +38,34 @@ const SearchContainer = () => {
     setSearch(" ");
   };
 
+  // const handleFavorite = () => {
+  //   console.log("click");
+  // };
+
   return (
     <div className="SearchContainer">
       <form onSubmit={getSearch} className="search-form">
         <input
-          className="search-bar"
+          className="form-control"
           type="text"
-          value={search}
+          placeholder="Search foods"
+          aria-label="Search"
           onChange={updateSearch}
         />
-        <button className="search-button" type="submit">
+        {/* <button className="search-button" type="submit">
           Search
-        </button>
+        </button> */}
       </form>
       <div className="recipies">
         {recipes.map(recipe => (
           <Recipe
-            key={recipe.recipe.label}
+            key={recipe.recipe.id}
             title={recipe.recipe.label}
             calories={recipe.recipe.calories}
             image={recipe.recipe.image}
             ingredients={recipe.recipe.ingredients}
             totalNutrients={recipe.recipe.totalNutrients}
+            // handleFavorite={handleFavorite}
           />
         ))}
       </div>
