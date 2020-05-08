@@ -5,52 +5,49 @@ import { Link } from "react-router-dom";
 
 // class Header extends Component {
 //   render() {
-const Header = props => {
+const Header = (props) => {
   // console.log(props)
 
   const handleClick = () => {
     axios
       .delete("http://localhost:3001/logout", { withCredentials: true })
-      .then(response => {
+      .then((response) => {
         props.handleLogout();
         // props.history.push('/')
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
   //
   const link = {
     width: "100px",
     padding: "15px",
-    //   margin: "0 6px 6px",
+    margin: "0 6px 6px",
     textDecoration: "none",
-    color: "white"
+    color: "white",
   };
 
   return (
     <div>
-      <div className="jumbotron header">
-        {/* <a className="navbar-brand">
-          <img src="./peas.png" alt="logo"></img>
-        </a> */}
-        <h1 className="display-4">Peas of Mind</h1>
+      <div className='jumbotron header'>
+        <h1 className='display-4'>Peas of Mind</h1>
       </div>
-      <div className="nav-bar">
+      <div className='nav-bar'>
         {" "}
-        <NavLink to="/" exact style={link}>
+        <NavLink to='/' exact style={link}>
           Home
         </NavLink>
-        <NavLink to="/search" exact style={link}>
+        <NavLink to='/search' exact style={link}>
           Search
         </NavLink>
-        <NavLink to="/profile" exact style={link}>
+        <NavLink to='/profile' exact style={link}>
           Profile
         </NavLink>
-        <NavLink to="/login" exact style={link}>
+        <NavLink to='/login' exact style={link}>
           Sign In
         </NavLink>
         {/* { 
         props.loggedInStatus ?  */}
-        <Link to="/" onClick={handleClick}>
+        <Link to='/' onClick={handleClick}>
           Log Out
         </Link>
         {/* } */}

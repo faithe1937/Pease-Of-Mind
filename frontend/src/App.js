@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
       user: {},
-      faveRecipe: []
+      faveRecipe: [],
     };
   }
 
@@ -25,7 +25,7 @@ class App extends Component {
   loginStatus = () => {
     axios
       .get("http://localhost:3001/logged_in", { withCredentials: true })
-      .then(response => {
+      .then((response) => {
         if (response.data.logged_in) {
           this.handleLogin(response.data);
         } else {
@@ -33,50 +33,53 @@ class App extends Component {
         }
       })
 
-      .catch(error => console.log("api errors:", error));
+      .catch((error) => console.log("api errors:", error));
   };
 
-  handleLogin = data => {
+  handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
-      user: data.user
+      user: data.user,
     });
   };
 
   handleLogout = () => {
     this.setState({
       isLoggedIn: false,
-      user: {}
+      user: {},
     });
   };
 
   addFave = (recipe) => {
-    this.setState({
-      faveRecipe: 
-      [...this.state.faveRecipe, recipe]
-    }, ()=> console.log(this.state.faveRecipe))
+    this.setState(
+      {
+        faveRecipe: [...this.state.faveRecipe, recipe],
+      },
+      () => console.log(this.state.faveRecipe)
+    );
+  };
 
-  }
-  
   render() {
     return (
       <div>
         <Router>
-        <Header
-                  // {...props}
-                  handleLogout={this.handleLogout}
-                  loggedInStatus={this.state.isLoggedIn}
-                />
+          <Header
+            // {...props}
+            handleLogout={this.handleLogout}
+            loggedInStatus={this.state.isLoggedIn}
+          />
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path='/' exact component={Home} />
 
-            <Route exact path="/search" component={SearchContainer}>
-            <SearchContainer addFave={this.addFave} />
+            <Route exact path='/search' component={SearchContainer}>
+              <SearchContainer addFave={this.addFave} />
             </Route>
 
-            <Route exact path="/profile" component={FavContainer}>
-              <FavContainer user={this.state.user} faveList={this.state.faveRecipe}/>
-            
+            <Route exact path='/profile' component={FavContainer}>
+              <FavContainer
+                user={this.state.user}
+                faveList={this.state.faveRecipe}
+              />
             </Route>
 
             {/* <Route
@@ -92,8 +95,8 @@ class App extends Component {
             /> */}
             <Route
               exact
-              path="/login"
-              render={props => (
+              path='/login'
+              render={(props) => (
                 <Login
                   {...props}
                   handleLogin={this.handleLogin}
@@ -103,8 +106,8 @@ class App extends Component {
             />
             <Route
               exact
-              path="/signup"
-              render={props => (
+              path='/signup'
+              render={(props) => (
                 <Signup
                   {...props}
                   handleLogin={this.handleLogin}

@@ -25,13 +25,13 @@ const SearchContainer = (props) => {
   };
 
   //value of the input
-  const updateSearch = e => {
+  const updateSearch = (e) => {
     setSearch(e.target.value);
     //console.log(search);
   };
 
   //dont fetch until user hits submit
-  const getSearch = e => {
+  const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
     //after you submit, it returns search space value to empty string
@@ -57,7 +57,7 @@ const SearchContainer = (props) => {
         </button> */}
       </form>
       <div className="recipies">
-        {recipes.map(recipe => (
+        {recipes.map((recipe) => (
           <Recipe
             key={recipe.recipe.id}
             title={recipe.recipe.label}
@@ -65,10 +65,8 @@ const SearchContainer = (props) => {
             image={recipe.recipe.image}
             ingredients={recipe.recipe.ingredients}
             totalNutrients={recipe.recipe.totalNutrients}
-
             addFave={props.addFave}
-   // handleFavorite={handleFavorite}
-
+            // handleFavorite={handleFavorite}
           />
         ))}
       </div>

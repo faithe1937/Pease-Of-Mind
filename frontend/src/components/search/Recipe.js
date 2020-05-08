@@ -1,13 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Fab from "@material-ui/core/Fab";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
-
 class Recipe extends Component {
-
-
-   render(){
-     
+  render() {
     return (
       <div className="column">
         <h1>{this.props.title}</h1>
@@ -23,19 +19,9 @@ class Recipe extends Component {
         Protein: {Math.round(this.props.totalNutrients.PROCNT.quantity)} grams
         <br />
         <br />
-
-
-        <Fab onClick={() => this.props.addFave(this.props)}>
-
-        <Fab>
-
-          <FavoriteIcon />
-        </Fab>
-        {/* </div> */}
       </div>
     );
   }
 }
-
 
 export default Recipe;

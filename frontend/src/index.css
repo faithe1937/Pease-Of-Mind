@@ -14,7 +14,11 @@ code {
 
 .header {
   width: 100%;
-  background-image: linear-gradient(to right top, lightyellow, orange);
+  background-image: linear-gradient(
+    to right top,
+    lightyellow,
+    rgb(25, 200, 231)
+  );
   background-repeat: no-repeat;
   font-size: 25px;
   letter-spacing: 1.5px;
@@ -30,7 +34,7 @@ code {
   width: 100%;
   background-color: rgba(75, 192, 192, 0.6);
   background-repeat: no-repeat;
-  font-size: 20px;
+  font-size: 15px;
   letter-spacing: 1.5px;
   display: flex;
   flex-direction: row;
@@ -66,12 +70,13 @@ code {
 
 .column {
   float: left;
-  width: 33.33%;
+  width: 32%;
+  margin-bottom: 20px;
 }
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: rgb(198, 235, 198);
+  background-color: white;
   max-width: 1000px;
   margin: auto;
   text-align: center;
@@ -88,4 +93,9 @@ button {
   cursor: pointer;
   width: 100%;
   font-size: 18px;
+}
+
+.photo {
+  height: 500px;
+  width: 900px;
 }

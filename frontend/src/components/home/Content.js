@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Content extends Component {
   render() {
     return (
-      <div className="master-detail-element detail">
+      <div className='master-detail-element detail'>
         <h2>What are Macronutrients?</h2>
         <hr></hr>
         <h3>Fat</h3>
