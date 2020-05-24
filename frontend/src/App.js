@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/home/Header";
 import Home from "./components/home/Home";
 import SearchContainer from "./components/search/SearchContainer";
-import FavContainer from "./components/favorite/FavContainer";
 import Login from "./components/registrations/Login";
 import Signup from "./components/registrations/Signup";
 
@@ -14,7 +13,6 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
       user: {},
-      faveRecipe: [],
     };
   }
 
@@ -50,72 +48,41 @@ class App extends Component {
     });
   };
 
-  addFave = (recipe) => {
-    this.setState(
-      {
-        faveRecipe: [...this.state.faveRecipe, recipe],
-      },
-      () => console.log(this.state.faveRecipe)
-    );
-  };
-
   render() {
     return (
       <div>
         <Router>
           <Header
-            // {...props}
             handleLogout={this.handleLogout}
             loggedInStatus={this.state.isLoggedIn}
           />
-          <Switch>
-            <Route path='/' exact component={Home} />
+          <Route path='/' exact component={Home} />
 
-            <Route exact path='/search' component={SearchContainer}>
-              <SearchContainer addFave={this.addFave} />
-            </Route>
-
-            <Route exact path='/profile' component={FavContainer}>
-              <FavContainer
-                user={this.state.user}
-                faveList={this.state.faveRecipe}
+          <Route exact path='/search' component={SearchContainer}>
+            <SearchContainer addFave={this.addFave} />
+          </Route>
+          <Route
+            exact
+            path='/login'
+            render={(props) => (
+              <Login
+                {...props}
+                handleLogin={this.handleLogin}
+                loggedInStatus={this.state.isLoggedIn}
               />
-            </Route>
-
-            {/* <Route
-              exact
-              path="/header"
-              render={props => (
-                <Header
-                  {...props}
-                  handleLogout={this.handleLogout}
-                  loggedInStatus={this.state.isLoggedIn}
-                />
-              )}
-            /> */}
-            <Route
-              exact
-              path='/login'
-              render={(props) => (
-                <Login
-                  {...props}
-                  handleLogin={this.handleLogin}
-                  loggedInStatus={this.state.isLoggedIn}
-                />
-              )}
-            />
-            <Route
-              exact
-              path='/signup'
-              render={(props) => (
-                <Signup
-                  {...props}
-                  handleLogin={this.handleLogin}
-                  loggedInStatus={this.state.isLoggedIn}
-                />
-              )}
-            />
-          </Switch>
+            )}
+          />
+          <Route
+            exact
+            path='/signup'
+            render={(props) => (
+              <Signup
+                {...props}
+                handleLogin={this.handleLogin}
+                loggedInStatus={this.state.isLoggedIn}
+              />
+            )}
+          />
         </Router>
       </div>
     );

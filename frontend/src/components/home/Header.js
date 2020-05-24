@@ -1,23 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-// class Header extends Component {
-//   render() {
 const Header = (props) => {
-  // console.log(props)
-
   const handleClick = () => {
     axios
       .delete("http://localhost:3001/logout", { withCredentials: true })
       .then((response) => {
         props.handleLogout();
-        // props.history.push('/')
       })
       .catch((error) => console.log(error));
   };
-  //
   const link = {
     width: "100px",
     padding: "15px",
@@ -28,11 +22,7 @@ const Header = (props) => {
 
   return (
     <div>
-      <div className='jumbotron header'>
-        <h1 className='display-4'>Peas of Mind</h1>
-      </div>
       <div className='nav-bar'>
-        {" "}
         <NavLink to='/' exact style={link}>
           Home
         </NavLink>
@@ -45,12 +35,12 @@ const Header = (props) => {
         <NavLink to='/login' exact style={link}>
           Sign In
         </NavLink>
-        {/* { 
-        props.loggedInStatus ?  */}
         <Link to='/' onClick={handleClick}>
           Log Out
         </Link>
-        {/* } */}
+      </div>
+      <div className='jumbotron header'>
+        <h1 className='display-4'>Peas of Mind</h1>
       </div>
     </div>
   );

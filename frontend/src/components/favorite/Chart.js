@@ -2,44 +2,33 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 
 class Chart extends Component {
-
   render() {
-    console.log(this.props.calories)
-   const data = {
-    labels: ["Calories", "Fat", "Carbohydrate", "Protein"],
-    datasets: [
-      {
-        label: "kcal",
-        data: [
-          //calories
-          this.props.calories,
-          //fats 
-          this.props.fat, 
-          //carbs
-          this.props.carb, 
-          //protein
-          this.props.protein],
+    const data = {
+      labels: ["Carbohydrate", "Fat", "Protein"],
+      datasets: [
+        {
+          label: "gram",
+          data: [42, 18, 27],
 
-        backgroundColor: [
-          "rgba(153, 102, 255, 0.6)",
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(54, 162, 235, 0.6)",
-          "rgba(255, 206, 86, 0.6)"
-        ]
-      }
-    ]
-  }
+          backgroundColor: [
+            "rgba(224, 210, 62, 1)",
+            "rgba(165, 44, 135, 1)",
+            "rgba(36, 41, 137, 1)",
+          ],
+        },
+      ],
+    };
 
     return (
-      <div className="chart">
+      <div className='chart'>
         <Bar
           data={data}
           options={{
             title: {
               display: true,
-              text: "Macronutrient Data Value",
-              fontSize: 30
-            }
+              text: "Thai Turkey Lettuce Wraps",
+              fontSize: 30,
+            },
           }}
         />
       </div>
@@ -48,3 +37,14 @@ class Chart extends Component {
 }
 
 export default Chart;
+
+// data: [
+//       //calories
+//       this.props.calories,
+//       //fats
+//       this.props.fat,
+//       //carbs
+//       this.props.carb,
+//       //protein
+//       this.props.protein,
+//     ],
